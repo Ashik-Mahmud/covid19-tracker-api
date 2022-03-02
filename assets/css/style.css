@@ -18,3 +18,13 @@ body{
 #preload{
     display: none;
 }
+
+.total-reports-container th{
+    vertical-align: middle;
+}
+.total-reports-container td span{
+    /* shadow-sm d-inline-block px-2 py-1 text-center  */
+    display: inline-block;
+    padding: .3rem 1rem;
+    text-align: center;
+}

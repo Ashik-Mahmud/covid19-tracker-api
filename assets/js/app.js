@@ -91,41 +91,35 @@ const displayIndividualReport = (report) => {
     } = report[0];
     let pattern = /\B(?=(\d{3})+(?!\d))/g;
     contentBody.innerHTML = `
-            <div class="card mb-4 rounded-0">
+            <div class="card mb-4 rounded-0" >
                 <div class="card-header bg-dark bg-opacity-10">
                     <b>Country Info</b>
                 </div>
                 <table class="table card-body">
-                    <tr>
+                    <tr class="total-reports-container">
                         <th>Country name</th>
-                        <td >
-                            <span class="shadow-sm d-inline-block px-2 py-1 text-center bg-dark text-white"  >${country}</span>
-                        </td>
+                        <td ><span class="bg-dark text-white">${country}</span></td>
                         <th>Continent</th>
-                        <td>
-                            <span class="shadow-sm d-inline-block px-2 py-1 text-center bg-dark text-white">${continent}</span> 
-                        </td>
+                        <td><span class="bg-dark text-white">${continent}</span></td>
                         <th>Flags</th>
-                        <td>
-                            <img src="${countryInfo.flag}" alt="flags" width="40px">
-                        </td>
+                        <td><img src="${countryInfo.flag}" alt="flags" width="40px"></td>
                         </tr>
                 </table>
             </div>
-            <div class="card mb-4 rounded-0">
+            <div class="card mb-4 rounded-0" >
                 <div class="card-header bg-dark bg-opacity-10">
                     <b>Today Reports</b>
                 </div>
                 <table class="table card-body">
-                    <tr>
+                    <tr class="total-reports-container">
                         <th>Today Cases</th>
-                        <td ><span class="shadow-sm d-inline-block px-2 py-1 text-center bg-warning text-dark">${todayCases.toString().replace(pattern, ",")}</span></td>
+                        <td ><span class="bg-warning text-dark">${todayCases.toString().replace(pattern, ",")}</span></td>
                         <th>Today Recovered</th>
-                        <td ><span class="shadow-sm d-inline-block px-2 py-1 text-center bg-success text-white">${todayRecovered.toString().replace(pattern, ",")}</span></td>
+                        <td ><span class="bg-success text-white">${todayRecovered.toString().replace(pattern, ",")}</span></td>
                         <th>Today Deaths</th>
-                        <td ><span class="shadow-sm d-inline-block px-2 py-1 text-center bg-danger text-white">${todayDeaths.toString().replace(pattern, ",")}</span></td>
+                        <td ><span class="bg-danger text-white">${todayDeaths.toString().replace(pattern, ",")}</span></td>
                         <th>Active</th>
-                        <td ><span class="shadow-sm d-inline-block px-2 py-1 text-center bg-info text-white">${active.toString().replace(pattern, ",")}</span></td>
+                        <td ><span class="bg-info text-white">${active.toString().replace(pattern, ",")}</span></td>
                     </tr>
                 </table>
             </div>
@@ -134,16 +128,15 @@ const displayIndividualReport = (report) => {
                     <b>Total Reports</b>
                 </div>
                 <table class="table card-body">
-                
-                <tr>
+                <tr class="total-reports-container">
                     <th>Total Cases</th>
-                    <td ><span class="shadow-sm d-inline-block px-2 py-1 text-center bg-warning text-dark">${cases.toString().replace(pattern, ",")}</span></td>
+                    <td ><span class="bg-warning text-dark">${cases.toString().replace(pattern, ",")}</span></td>
                     <th>Total Recovered</th>
-                    <td ><span class="shadow-sm d-inline-block px-2 py-1 text-center bg-success text-white">${recovered.toString().replace(pattern, ",")}</span></td>
+                    <td ><span class="bg-success text-white">${recovered.toString().replace(pattern, ",")}</span></td>
                     <th>Total Deaths</th>
-                    <td ><span class="shadow-sm d-inline-block px-2 py-1 text-center bg-danger text-white">${deaths.toString().replace(pattern, ",")}</span></td>
+                    <td ><span class=" bg-danger text-white">${deaths.toString().replace(pattern, ",")}</span></td>
                     <th>Active</th>
-                    <td ><span class="shadow-sm d-inline-block px-2 py-1 text-center bg-info text-white">${active.toString().replace(pattern, ",")}</span></td>
+                    <td ><span class="bg-info text-white">${active.toString().replace(pattern, ",")}</span></td>
                 </tr>
                 </table>
             </div>
