@@ -1,12 +1,12 @@
 /* 
 TODO:
--
--
--
--
--
--
-
+- select all important elements  
+- create function for load all of data by search terms
+- display country at select option
+- load global reports based on logic
+- display global reports at UI 
+- load individual country reports by select
+- display Individual Reports 
 */
 
 /* STEP: 1 select all important elements  */
@@ -22,15 +22,11 @@ const loadReports = async () => {
     displayCountryAtSelect(data)
 };
 
-
 /* STEP: 3 display country at select option */
 const displayCountryAtSelect = (countries) => {
     const countryLists = countries.map((country) => `<option value="${country.countryInfo.iso2}">${country.country}</option>`).join('');
     selectContainer.innerHTML += countryLists;
 }
-
-
-
 /* STEP: 4 load global reports based on logic  */
 const globalReports = (reports) => {
     const checkBox = document.getElementById("flexSwitchCheckChecked");
