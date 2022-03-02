@@ -64,10 +64,15 @@ const loadIndividualReport = async (event) => {
     error.style.display = 'none';
     contentBody.textContent = '';
     let countryId = event.target.value;
-    let response = await fetch(`https://corona.lmao.ninja/v2/countries/`);
-    let data = await response.json();
-    const filteredReports = data.filter(report => report.countryInfo.iso2 === countryId);
-    displayIndividualReport(filteredReports);
+    if (countryId === '') {
+        preload.style.display = 'none';
+        error.style.display = 'block';
+    } else {
+        let response = await fetch(`https://corona.lmao.ninja/v2/countries/`);
+        let data = await response.json();
+        const filteredReports = data.filter(report => report.countryInfo.iso2 === countryId);
+        displayIndividualReport(filteredReports);
+    }
 }
 
 /* STEP: 7 display Individual Reports  */
@@ -114,31 +119,31 @@ const displayIndividualReport = (report) => {
                 <table class="table card-body">
                     <tr>
                         <th>Today Cases</th>
-                        <td ><span class="shadow-sm d-inline-block px-2 py-1 text-center bg-dark text-white">${todayCases.toString().replace(pattern, ",")}</span></td>
+                        <td ><span class="shadow-sm d-inline-block px-2 py-1 text-center bg-warning text-dark">${todayCases.toString().replace(pattern, ",")}</span></td>
                         <th>Today Recovered</th>
-                        <td ><span class="shadow-sm d-inline-block px-2 py-1 text-center bg-dark text-white">${todayRecovered.toString().replace(pattern, ",")}</span></td>
+                        <td ><span class="shadow-sm d-inline-block px-2 py-1 text-center bg-success text-white">${todayRecovered.toString().replace(pattern, ",")}</span></td>
                         <th>Today Deaths</th>
-                        <td ><span class="shadow-sm d-inline-block px-2 py-1 text-center bg-dark text-white">${todayDeaths.toString().replace(pattern, ",")}</span></td>
+                        <td ><span class="shadow-sm d-inline-block px-2 py-1 text-center bg-danger text-white">${todayDeaths.toString().replace(pattern, ",")}</span></td>
                         <th>Active</th>
-                        <td ><span class="shadow-sm d-inline-block px-2 py-1 text-center bg-dark text-white">${active.toString().replace(pattern, ",")}</span></td>
+                        <td ><span class="shadow-sm d-inline-block px-2 py-1 text-center bg-info text-white">${active.toString().replace(pattern, ",")}</span></td>
                     </tr>
                 </table>
             </div>
             <div class="card mb-4 rounded-0">
-                <div class="card-header bg-dark bg-opacity-10">
+                <div class="card-header bg-success bg-opacity-10">
                     <b>Total Reports</b>
                 </div>
                 <table class="table card-body">
                 
                 <tr>
                     <th>Total Cases</th>
-                    <td ><span class="shadow-sm d-inline-block px-2 py-1 text-center bg-dark text-white">${cases.toString().replace(pattern, ",")}</span></td>
+                    <td ><span class="shadow-sm d-inline-block px-2 py-1 text-center bg-warning text-dark">${cases.toString().replace(pattern, ",")}</span></td>
                     <th>Total Recovered</th>
-                    <td ><span class="shadow-sm d-inline-block px-2 py-1 text-center bg-dark text-white">${recovered.toString().replace(pattern, ",")}</span></td>
+                    <td ><span class="shadow-sm d-inline-block px-2 py-1 text-center bg-success text-white">${recovered.toString().replace(pattern, ",")}</span></td>
                     <th>Total Deaths</th>
-                    <td ><span class="shadow-sm d-inline-block px-2 py-1 text-center bg-dark text-white">${deaths.toString().replace(pattern, ",")}</span></td>
+                    <td ><span class="shadow-sm d-inline-block px-2 py-1 text-center bg-danger text-white">${deaths.toString().replace(pattern, ",")}</span></td>
                     <th>Active</th>
-                    <td ><span class="shadow-sm d-inline-block px-2 py-1 text-center bg-dark text-white">${active.toString().replace(pattern, ",")}</span></td>
+                    <td ><span class="shadow-sm d-inline-block px-2 py-1 text-center bg-info text-white">${active.toString().replace(pattern, ",")}</span></td>
                 </tr>
                 </table>
             </div>
