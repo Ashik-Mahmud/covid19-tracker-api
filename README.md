@@ -24,7 +24,7 @@ This simple covid 19 tracker in api. here you will see individual country report
 # Demo Link in the about section
 
 # Preview Demo for this Application
-![imageScreenshot](./preview.png)
+<img src="./preview.gif" style="width: 100%"/>
 
 
 > Thanks for reach out me on github.

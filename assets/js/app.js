@@ -48,6 +48,8 @@ const displayGlobalReports = (logic, reports) => {
         deaths = reports.reduce((acc, deaths) => acc + deaths.todayDeaths, 0);
         active = reports.reduce((acc, active) => acc + active.active, 0);
     }
+
+
     document.getElementById("cases").innerText = cases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     document.getElementById("recovered").innerText = recovered.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     document.getElementById("deaths").innerText = deaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -70,6 +72,7 @@ const loadIndividualReport = async (event) => {
         displayIndividualReport(filteredReports);
     }
 }
+
 
 /* STEP: 7 display Individual Reports  */
 const displayIndividualReport = (report) => {
@@ -136,11 +139,90 @@ const displayIndividualReport = (report) => {
                 </tr>
                 </table>
             </div>
+            <div id="chartContainer" style="height: 370px; width: 100%;"></div>
     `;
     preload.style.display = 'none';
+    chartInit({
+        country,
+        todayCases,
+        todayRecovered,
+        todayDeaths,
+        cases,
+        recovered,
+        deaths,
+        active
+    });
 
 }
 
 selectContainer.addEventListener('change', loadIndividualReport)
 
 loadReports();
+
+
+
+// Initialization chart 
+const chartInit = (obj) => {
+    let {
+        country,
+        todayCases,
+        todayRecovered,
+        todayDeaths,
+        cases,
+        recovered,
+        deaths,
+        active
+    } = obj;
+    var chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: true,
+        theme: "light2", // "light1", "light2", "dark1", "dark2"
+        title: {
+            text: "Covid-19 Reports For "+ country
+        },
+        axisY: {
+            title: "Total Patients",
+
+        },
+        axisX: {
+            title: "Covid-19 Statistic"
+        },
+        data: [{
+            type: "column",
+            yValueFormatString: "#,##0.0#\" peoples\"",
+            dataPoints: [{
+                    label: "Total Cases",
+                    y: cases
+                },
+                {
+                    label: "Total Recovered",
+                    y: recovered
+                },
+                {
+                    label: "Total Deaths",
+                    y: deaths
+                },
+                {
+                    label: "Today Cases",
+                    y: todayCases
+                },
+                {
+                    label: "Today Recovered",
+                    y: todayRecovered
+                },
+                {
+                    label: "Today Deaths",
+                    y: todayDeaths
+                },
+                {
+                    label: "Active",
+                    y: active
+                }
+
+            ]
+        }]
+    });
+    chart.render();
+
+
+
+}
